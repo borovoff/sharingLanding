@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>tzar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta
+        name="keywords"
+        content="прокат велосипедов, Девяткино, Мурино, шеринг велосипедов, аренда велосипедов, велопрокат, велосипеды, электронный замок, велозамок, tzar"/>
+    <meta
+        name="description"
+        content="Прокат велосипедов в Девяткино (Мурино), взять в аренду в приложении"/>
+    <meta property="og:title" content="Прокат велосипедов в Девяткино tzar" />
+    <meta
+        property="og:description"
+        content="Велосипеды, пристегнутые на электронный замок берут в аренду в приложении."/>
+    <meta property="og:url" content="https://sharing.tzar.su/" />
+    <meta property="og:type" content="website" />
+    <style>
+        body {
+            background-color: #f3f3f3;
+            font-family: Helvetica, sans-serif;
+            color: var(--base-color);
+        }
+
+        :root {
+            --card-margin-width: 30px;
+            --column-margin: 100px;
+            --base-color: #0a2437;
+            --blue-color: #b7f2ed;
+            --logo-diameter: 60px;
+        }
+
+        .logo {
+            font-family: Verdana, sans-serif;
+            border-radius: 50%;
+            background-color: var(--blue-color);
+            letter-spacing: -1px;
+            width: var(--logo-diameter);
+            height: var(--logo-diameter);
+            font-size: calc(var(--logo-diameter) / 1.6);
+            text-align: center;
+            line-height: calc(var(--logo-diameter) / 1.07);
+            margin-left: var(--card-margin-width);
+        }
+
+        h1 {
+            margin-left: var(--card-margin-width);
+            font-size: 5vw;
+            word-spacing: 100vw;
+        }
+
+        h2 {
+            margin: 10px 0 6px;
+        }
+
+        a {
+            color: var(--base-color);
+        }
+
+        p {
+            margin: 6px 0;
+            font-size: 20px;
+        }
+
+        .button {
+            margin: 8px 0;
+            cursor: pointer;
+            padding: 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .buttons-group {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .description-button {
+            background-color: var(--blue-color);
+        }
+
+        .description-button:hover {
+            background-color: #f3f3f3;
+        }
+
+        .blog-button {
+            background-color: var(--base-color);
+            color: white;
+        }
+
+        .blog-button:hover {
+            background-color: #f3f3f3;
+            color: var(--base-color);
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            margin: 0 var(--column-margin);
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            width: calc(50% - 2 * (30px + var(--card-margin-width)));
+            min-width: 300px;
+            margin: var(--card-margin-width) var(--card-margin-width) 0;
+            padding: 30px;
+            background: white;
+            border-radius: 14px;
+        }
+
+        address {
+            margin-top: 10px;
+        }
+
+        @media only screen and (max-width: 1100px) {
+            :root {
+                --column-margin: 30px;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            .card {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            :root {
+                --column-margin: 0;
+                --card-margin-width: 10px;
+            }
+
+            .card {
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="column">
+    <div class="logo">tz</div>
+    <h1>Шеринг велосипедов</h1>
+    <div class="row">
+        <div class="card">
+            <p>Велосипеды пристегнуты на электронный замок. Их можно брать в аренду через приложение <b>tzar</b>.</p>
+            <p>Оставить велосипед можно в размеченных на карте зонах.</p>
+            <div class="buttons-group">
+                <a
+                        href="https://tzar.su"
+                        class="button description-button"
+                        target="_blank">Скачать</a>
+                <a
+                        href="/instruction.pdf"
+			target="_blank"
+                        class="button description-button">Инструкция</a>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Цена</h2>
+            <p>3 руб/мин</p>
+            <h2>Контакты</h2>
+            <p><a href="tel:+7 (952) 268-88-69">+7 (952) 268-88-69</a></p>
+            <p><a href="mailto:tzarsharing@gmail.com">tzarsharing@gmail.com</a></p>
+            <address>Мурино (Девяткино), бульвар Менделеева</address>
+            <div class="buttons-group">
+                <a
+                        href="https://medium.com/tzar"
+                        target="_blank"
+                        class="button blog-button">Блог</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
