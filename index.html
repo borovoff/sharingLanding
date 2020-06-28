@@ -145,6 +145,13 @@
             margin-top: 10px;
         }
 
+        #map {
+            width: calc(100% - 60px);
+            height: 400px;
+            margin: 60px 30px 20px;
+            border-radius: 14px;
+        }
+
         @media only screen and (max-width: 1100px) {
             :root {
                 --column-margin: 30px;
@@ -208,6 +215,41 @@
             </div>
         </div>
     </div>
+    <div id="map"></div>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJjUQYsTXLGYM_ShSfRoHRHLubuqvNN2I&callback=initMap&libraries=&v=weekly"
+            defer></script>
+    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+    <script>
+        function initMap() {
+            const parameters = {
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                method: 'GET'
+            };
+
+            fetch('https://sharing.tzar.su/api/locks/', parameters)
+                .then(r => r.json())
+                .then(locks => {
+                    const map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: 60.056, lng: 30.433},
+                        zoom: 14,
+                    });
+
+                    const markers = locks.map(l =>
+                        new google.maps.Marker({
+                            map: map,
+                            position: {lat: l.lat, lng: l.lng},
+                            icon: 'assets/icons/pedal_bike-black-36dp.svg'
+                        })
+                    );
+
+                    new MarkerClusterer(map, markers, {imagePath: 'assets/icons/m'});
+                });
+        }
+    </script>
 </div>
 </body>
 </html>
