@@ -223,6 +223,11 @@
     <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
     <script>
         function initMap() {
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 60.056, lng: 30.433},
+                zoom: 14,
+            });
+
             const parameters = {
                 headers: {
                     'Content-type': 'application/json'
@@ -230,14 +235,10 @@
                 method: 'GET'
             };
 
-            fetch('https://sharing.tzar.su/api/locks/', parameters)
+            const baseUrl = 'https://sharing.tzar.su/api/';
+            fetch(baseUrl + 'locks/', parameters)
                 .then(r => r.json())
                 .then(locks => {
-                    const map = new google.maps.Map(document.getElementById('map'), {
-                        center: {lat: 60.056, lng: 30.433},
-                        zoom: 14,
-                    });
-
                     const markers = locks.map(l =>
                         new google.maps.Marker({
                             map: map,
@@ -248,6 +249,21 @@
 
                     new MarkerClusterer(map, markers, {imagePath: 'assets/icons/m'});
                 });
+
+            fetch(baseUrl + 'zones/', parameters)
+                .then(r => r.json())
+                .then(response => response.zones.forEach(z => {
+                    const bermudaTriangle = new google.maps.Polygon({
+                        paths: z,
+                        strokeColor: '#ff00ff',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: '#00ff00',
+                        fillOpacity: 0.35
+                    });
+
+                    bermudaTriangle.setMap(map);
+                }))
         }
     </script>
 </div>
